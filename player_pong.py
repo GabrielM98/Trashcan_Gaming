@@ -100,7 +100,7 @@ def draw(canvas):
         ball_vel[1] = -ball_vel[1]
 
     #ball collison check on gutters or paddles
-    if ball_pos[0] <= BALL_RADIUS + PAD_WIDTH and ball_pos[1] in range(int(paddle1_pos[1] - HALF_PAD_HEIGHT),int(paddle1_pos[1] + HALF_PAD_HEIGHT),1):
+    if ball_pos[0] <= BALL_RADIUS + PAD_WIDTH and ball_pos[1] in range(int(paddle1_pos[1] - HALF_PAD_HEIGHT-10),int(paddle1_pos[1] + HALF_PAD_HEIGHT+10),1):
         ball_vel[0] = -ball_vel[0]
         ball_vel[0] *= 1.1
         ball_vel[1] *= 1.1
@@ -108,7 +108,7 @@ def draw(canvas):
         r_score += 1
         ball_init(True)
 
-    if ball_pos[0] >= WIDTH + 1 - BALL_RADIUS - PAD_WIDTH and ball_pos[1] in range(int(paddle2_pos[1] - HALF_PAD_HEIGHT),int(paddle2_pos[1] + HALF_PAD_HEIGHT),1):
+    if ball_pos[0] >= WIDTH + 1 - BALL_RADIUS - PAD_WIDTH and ball_pos[1] in range(int(paddle2_pos[1] - HALF_PAD_HEIGHT-10),int(paddle2_pos[1] + HALF_PAD_HEIGHT + 10),1):
         ball_vel[0] = -ball_vel[0]
         ball_vel[0] *= 1.1
         ball_vel[1] *= 1.1
@@ -130,22 +130,22 @@ def draw(canvas):
 def keydown(event):
     global paddle1_vel, paddle2_vel
 
-    if event.key == K_LEFT:
+    if event.key == K_UP:
         paddle2_vel = -8
-    elif event.key == K_RIGHT:
+    elif event.key == K_DOWN:
         paddle2_vel = 8
-    elif event.key == K_a:
+    elif event.key == K_w:
         paddle1_vel = -8
-    elif event.key == K_d:
+    elif event.key == K_s:
         paddle1_vel = 8
 
 #keyup handler
 def keyup(event):
     global paddle1_vel, paddle2_vel
 
-    if event.key in (K_a, K_d):
+    if event.key in (K_w, K_s):
         paddle1_vel = 0
-    elif event.key in (K_LEFT, K_RIGHT):
+    elif event.key in (K_UP, K_DOWN):
         paddle2_vel = 0
 
 init()
