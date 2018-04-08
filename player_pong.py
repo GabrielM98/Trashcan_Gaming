@@ -130,22 +130,22 @@ def draw(canvas):
 def keydown(event):
     global paddle1_vel, paddle2_vel
 
-    if event.key == K_UP:
+    if event.key == K_LEFT:
         paddle2_vel = -8
-    elif event.key == K_DOWN:
+    elif event.key == K_RIGHT:
         paddle2_vel = 8
-    elif event.key == K_w:
+    elif event.key == K_a:
         paddle1_vel = -8
-    elif event.key == K_s:
+    elif event.key == K_d:
         paddle1_vel = 8
 
 #keyup handler
 def keyup(event):
     global paddle1_vel, paddle2_vel
 
-    if event.key in (K_w, K_s):
+    if event.key in (K_a, K_d):
         paddle1_vel = 0
-    elif event.key in (K_UP, K_DOWN):
+    elif event.key in (K_LEFT, K_RIGHT):
         paddle2_vel = 0
 
 init()
